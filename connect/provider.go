@@ -7,7 +7,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
-	kc "github.com/ricardo-ch/go-kafka-connect/v3/lib/connectors"
+	kc "github.com/winniehuang-ap/kafka-connect/v4/lib/connectors"
 )
 
 func Provider() *schema.Provider {
