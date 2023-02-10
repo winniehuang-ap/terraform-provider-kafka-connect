@@ -4,9 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	kc "github.com/winniehuang-ap/kafka-connect/v4/lib/connectors"
+	kc "github.com/winniehuang-ap/kafka-connect/v3/lib/connectors"
 )
 
 func kafkaConnectorResource() *schema.Resource {
@@ -73,17 +74,16 @@ func connectorCreate(d *schema.ResourceData, meta interface{}) error {
 
 	fmt.Printf("[INFO] Created the connector %v\n", connectorResponse)
 
-    if err != nil {
-        if !strings.Contains(err.Error(), "already exists") {
-            return err
-        }
-    }
+	if err != nil {
+		if !strings.Contains(err.Error(), "already exists") {
+			return err
+		}
+	}
 
-    newConfFiltered := removeSecondKeysFromFirst(connectorResponse.Config, sensitiveCache)
-    d.SetId(name)
-    d.Set("config_sensitive", sensitiveCache)
-    d.Set("config", newConfFiltered)
-
+	newConfFiltered := removeSecondKeysFromFirst(connectorResponse.Config, sensitiveCache)
+	d.SetId(name)
+	d.Set("config_sensitive", sensitiveCache)
+	d.Set("config", newConfFiltered)
 
 	return connectorRead(d, meta)
 }
