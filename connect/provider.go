@@ -2,10 +2,10 @@ package connect
 
 import (
 	"context"
-	"log"
-
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"log"
+	"time"
 
 	kc "github.com/winniehuang-ap/kafka-connect/v3/lib/connectors"
 )
@@ -38,6 +38,11 @@ func Provider() *schema.Provider {
 				// No DefaultFunc here to read from the env on account of this issue:
 				// https://github.com/hashicorp/terraform-plugin-sdk/issues/142
 			},
+			"timeout": {
+				Type:     schema.ValueType(time.Second),
+				Optional: true,
+				//DefaultFunc: schema.EnvDefaultFunc("KAFKA_CONNECT_TIMEOUT", 10 * time.Second),
+			},
 		},
 		ConfigureContextFunc: providerConfigure,
 		ResourcesMap: map[string]*schema.Resource{
@@ -51,7 +56,8 @@ func Provider() *schema.Provider {
 func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
 	log.Printf("[INFO] Initializing KafkaConnect client")
 	addr := d.Get("url").(string)
-	c := kc.NewClient(addr)
+	timeout := d.Get("timeout").(time.Duration)
+	c := kc.NewClient(addr, timeout)
 	user := d.Get("basic_auth_username").(string)
 	pass := d.Get("basic_auth_password").(string)
 	if user != "" && pass != "" {
