@@ -313,6 +313,8 @@ github.com/vmihailenco/msgpack/v4 v4.3.12/go.mod h1:gborTTJjAo/GWTqqRjrLCn9pgNN+
 github.com/vmihailenco/tagparser v0.1.1/go.mod h1:OeAg3pn3UbLjkWt+rN9oFYB6u/cQgqMEUPoW2WPyhdI=
 github.com/winniehuang-ap/kafka-connect/v3 v3.0.0-20230209234125-fbfa977cc991 h1:fo30733TLGDFwY7oh+QTqDrwVcDn+N0b7QzkM95n1II=
 github.com/winniehuang-ap/kafka-connect/v3 v3.0.0-20230209234125-fbfa977cc991/go.mod h1:QCPLhq3sD2nf0q6KikBzYP3342qoP9WOl3dqzEIhz5Y=
+github.com/winniehuang-ap/kafka-connect/v3 v3.0.0-20230221051914-c475171ff92e h1:XYgzJEwcIeEF8DwHfL5ntJ6k0bhHDwGLKxlir4NRscY=
+github.com/winniehuang-ap/kafka-connect/v3 v3.0.0-20230221051914-c475171ff92e/go.mod h1:QCPLhq3sD2nf0q6KikBzYP3342qoP9WOl3dqzEIhz5Y=
 github.com/xanzy/ssh-agent v0.3.0 h1:wUMzuKtKilRgBAD1sUb8gOwwRr2FGoBVumcjoOACClI=
 github.com/xanzy/ssh-agent v0.3.0/go.mod h1:3s9xbODqPuuhK9JV1R321M/FlMZSBvE5aY6eAcqrDh0=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
